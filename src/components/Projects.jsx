@@ -1,10 +1,12 @@
-// Projects: masonry (CSS columns) + filter kategori dengan transisi halus.
+// Projects: grid 2 kolom (aspek rasio thumbnail konsisten) + filter kategori.
 // - Filter chips: indikator aktif "geser" antar chip (layoutId)
 // - Kartu masuk/keluar dengan fade+scale via AnimatePresence
+// - Thumbnail SVG data-driven + overlay info saat hover (lihat ProjectThumb)
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '../data/portfolio';
 import SectionHead from './SectionHead';
+import ProjectThumb from './ProjectThumb';
 
 // Kategori unik dari data + "Semua" di depan
 const categories = ['Semua', ...new Set(projects.map((p) => p.category))];
@@ -18,6 +20,7 @@ export default function Projects() {
     <section id="proyek">
       <div className="container">
         <SectionHead
+          num="02"
           label="Portofolio"
           title="Proyek Pilihan"
           sub="Filter berdasarkan kategori — klik kartu untuk melihat detail atau kode sumbernya."
@@ -46,7 +49,7 @@ export default function Projects() {
           })}
         </div>
 
-        <div className="projects-masonry">
+        <div className="projects-grid">
           <AnimatePresence mode="popLayout">
             {filtered.map((p, i) => (
               <motion.a
@@ -58,17 +61,23 @@ export default function Projects() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3, delay: i * 0.04 }}
               >
-                <span className="card-category">{p.category}</span>
-                <h3>{p.title}</h3>
-                <p>{p.description}</p>
-                <div className="project-tags">
-                  {p.tags.map((t) => (
-                    <span className="pill" key={t}>
-                      {t}
-                    </span>
-                  ))}
+                <ProjectThumb project={p} index={i} />
+                <div className="card-body">
+                  <div className="card-meta">
+                    <span className="card-category">{p.category}</span>
+                    <span className="card-year">{p.year}</span>
+                  </div>
+                  <h3>{p.title}</h3>
+                  <p>{p.description}</p>
+                  <div className="project-tags">
+                    {p.tags.map((t) => (
+                      <span className="pill" key={t}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="project-link">Lihat proyek →</span>
                 </div>
-                <span className="project-link">Lihat proyek →</span>
               </motion.a>
             ))}
           </AnimatePresence>

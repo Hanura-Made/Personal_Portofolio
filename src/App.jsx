@@ -3,6 +3,8 @@
 // dimatikan untuk pengguna yang memilih reduced-motion (aksesibilitas)
 import { MotionConfig } from 'framer-motion';
 import useLenis from './hooks/useLenis';
+import ScrollProgress from './components/ScrollProgress';
+import Reveal from './components/Reveal';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
@@ -22,14 +24,25 @@ function App() {
       <a className="skip-link" href="#konten">
         Langsung ke konten
       </a>
+      <ScrollProgress />
       <Navbar />
       <main id="konten">
-        <Hero />
+        <Reveal delay={80}>
+          <Hero />
+        </Reveal>
         <Marquee />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
+        <Reveal delay={120}>
+          <About />
+        </Reveal>
+        <Reveal delay={160}>
+          <Projects />
+        </Reveal>
+        <Reveal delay={200}>
+          <Skills />
+        </Reveal>
+        <Reveal delay={240}>
+          <Contact />
+        </Reveal>
       </main>
       <Footer />
     </MotionConfig>

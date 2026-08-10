@@ -9,7 +9,7 @@ export default function About() {
     <section id="tentang">
       <div className="container about-grid">
         <div>
-          <SectionHead label="Tentang Saya" title="Siapa di balik layar ini?" />
+          <SectionHead num="01" label="Tentang Saya" title="Siapa di balik layar ini?" />
           <motion.div
             variants={staggerContainer}
             initial="hidden"

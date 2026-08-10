@@ -9,6 +9,7 @@ export default function Contact() {
     <section id="kontak">
       <div className="container contact">
         <SectionHead
+          num="04"
           label="Kontak"
           title="Mari terhubung."
           sub="Punya pertanyaan, tawaran kolaborasi, atau sekadar ingin menyapa? Kirim email atau temukan saya di platform lain."

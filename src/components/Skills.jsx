@@ -14,6 +14,7 @@ export default function Skills() {
     <section id="skill">
       <div className="container">
         <SectionHead
+          num="03"
           label="Kemampuan"
           title="Skill & Tools"
           sub="Teknologi yang saya pakai untuk belajar dan mengerjakan proyek."
