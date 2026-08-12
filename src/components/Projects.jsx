@@ -51,17 +51,15 @@ export default function Projects() {
 
         <div className="projects-grid">
           <AnimatePresence mode="popLayout">
-            {filtered.map((p, i) => (
-              <motion.a
-                className="project-card"
-                key={p.title}
-                href={p.link}
-                initial={{ opacity: 0, y: 20, scale: 0.97 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3, delay: i * 0.04 }}
-              >
-                <ProjectThumb project={p} index={i} />
+            {filtered.map((p, i) => {
+              const hasLinks = Boolean(p.demo || p.repo);
+              const motionProps = {
+                initial: { opacity: 0, y: 20, scale: 0.97 },
+                animate: { opacity: 1, y: 0, scale: 1 },
+                exit: { opacity: 0, scale: 0.95 },
+                transition: { duration: 0.3, delay: i * 0.04 },
+              };
+              const body = (
                 <div className="card-body">
                   <div className="card-meta">
                     <span className="card-category">{p.category}</span>
@@ -76,10 +74,51 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  <span className="project-link">Lihat proyek →</span>
+                  {hasLinks ? (
+                    <div className="project-actions">
+                      {p.demo && (
+                        <a
+                          className="project-link project-link--primary"
+                          href={p.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Lihat live →
+                        </a>
+                      )}
+                      {p.repo && (
+                        <a
+                          className="project-link project-link--ghost"
+                          href={p.repo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Source code
+                        </a>
+                      )}
+                    </div>
+                  ) : (
+                    <span className="project-link">Lihat proyek →</span>
+                  )}
                 </div>
-              </motion.a>
-            ))}
+              );
+              return hasLinks ? (
+                <motion.article className="project-card" key={p.title} {...motionProps}>
+                  <ProjectThumb project={p} index={i} />
+                  {body}
+                </motion.article>
+              ) : (
+                <motion.a
+                  className="project-card"
+                  key={p.title}
+                  href={p.link}
+                  {...motionProps}
+                >
+                  <ProjectThumb project={p} index={i} />
+                  {body}
+                </motion.a>
+              );
+            })}
           </AnimatePresence>
         </div>
       </div>

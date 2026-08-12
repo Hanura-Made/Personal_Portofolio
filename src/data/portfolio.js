@@ -17,7 +17,7 @@ export const profile = {
 
 export const about = {
   paragraphs: [
-    'Halo, saya Hanura — Lulusan Informatika yang tertarik pada pengembangan perangkat lunak dan pengolahan data. Saya terbiasa bekerja dengan Python untuk otomasi, debugging sistematis, dan analisis data (CSV/Excel/pandas).',
+    'Halo, Saya Hanura — Lulusan Informatika yang tertarik pada pengembangan perangkat lunak dan pengolahan data. Saya terbiasa bekerja dengan Python untuk otomasi, debugging sistematis, dan analisis data (CSV/Excel/pandas).',
 
     'Saya percaya kode yang baik adalah kode yang bisa dibaca manusia lain, punya pengujian yang jelas, dan diselesaikan dengan pendekatan langkah demi langkah yang bisa diverifikasi.',
   ],
@@ -33,25 +33,6 @@ export const about = {
 
 export const projects = [
   {
-    title: 'Proyek Python — contoh',
-    description:
-      'Ganti dengan proyek nyatamu. Deskripsi yang lebih panjang membuat kartu ini lebih tinggi di masonry, memberi ritme visual yang menarik saat difilter. Ceritakan masalah yang kamu selesaikan, pendekatannya, dan hasil yang dicapai.',
-    tags: ['Python', 'pandas'],
-    category: 'Python',
-    year: '2024',
-    role: 'Personal Project',
-    link: '#', 
-  },
-  {
-    title: 'Proyek Python 2 — contoh',
-    description: 'Ganti dengan proyek otomasi atau pengolahan data-mu.',
-    tags: ['Python', 'CSV'],
-    category: 'Python',
-    year: '2024',
-    role: 'Personal Project',
-    link: '#', 
-  },
-   {
     title: 'Sistem Digitalisasi Izin Keluar Karyawan',
     description:
       'Aplikasi digitalisasi proses izin keluar karyawan yang dikembangkan selama kegiatan internship. Sistem membantu menggantikan proses manual dengan alur digital untuk pengajuan, pencatatan, dan pengelolaan data izin sehingga proses administrasi menjadi lebih terstruktur dan mudah dipantau.',
@@ -89,7 +70,8 @@ export const projects = [
     category: 'AI',
     year: '2025',
     role: 'Skripsi — Computer Vision',
-    link: '#',
+    demo: 'https://vit-eye-gender-classification-mpumsh4jmabrhrsadawrjp.streamlit.app/',
+    repo: 'https://github.com/Hanura-Made/vit-eye-gender-classification',
   },
 ];
 

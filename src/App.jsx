@@ -1,10 +1,12 @@
 // App: komposisi semua section portofolio
 // MotionConfig reducedMotion="user" -> animasi transform otomatis
 // dimatikan untuk pengguna yang memilih reduced-motion (aksesibilitas)
+import { useState } from 'react';
 import { MotionConfig } from 'framer-motion';
 import useLenis from './hooks/useLenis';
 import ScrollProgress from './components/ScrollProgress';
 import Reveal from './components/Reveal';
+import IntroLoader from './components/IntroLoader';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
@@ -16,6 +18,7 @@ import Footer from './components/Footer';
 
 function App() {
   useLenis(); // smooth scrolling (nonaktif otomatis utk reduced-motion)
+  const [introPhase, setIntroPhase] = useState('loading');
 
   return (
     <MotionConfig reducedMotion="user">
@@ -24,27 +27,36 @@ function App() {
       <a className="skip-link" href="#konten">
         Langsung ke konten
       </a>
-      <ScrollProgress />
-      <Navbar />
-      <main id="konten">
-        <Reveal delay={80}>
-          <Hero />
-        </Reveal>
-        <Marquee />
-        <Reveal delay={120}>
-          <About />
-        </Reveal>
-        <Reveal delay={160}>
-          <Projects />
-        </Reveal>
-        <Reveal delay={200}>
-          <Skills />
-        </Reveal>
-        <Reveal delay={240}>
-          <Contact />
-        </Reveal>
-      </main>
-      <Footer />
+      {introPhase !== 'completed' ? (
+        <IntroLoader phase={introPhase} onPhaseChange={setIntroPhase} />
+      ) : null}
+      <div
+        className={`site-shell site-shell--${introPhase}`}
+        inert={introPhase !== 'completed' ? '' : undefined}
+        aria-hidden={introPhase !== 'completed'}
+      >
+        <ScrollProgress />
+        <Navbar />
+        <main id="konten">
+          <Reveal delay={80}>
+            <Hero />
+          </Reveal>
+          <Marquee />
+          <Reveal delay={120}>
+            <About />
+          </Reveal>
+          <Reveal delay={160}>
+            <Projects />
+          </Reveal>
+          <Reveal delay={200}>
+            <Skills />
+          </Reveal>
+          <Reveal delay={240}>
+            <Contact />
+          </Reveal>
+        </main>
+        <Footer />
+      </div>
     </MotionConfig>
   );
 }
