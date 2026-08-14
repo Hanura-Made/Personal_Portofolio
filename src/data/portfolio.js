@@ -33,15 +33,28 @@ export const about = {
 
 export const projects = [
   {
-    title: 'Sistem Digitalisasi Izin Keluar Karyawan',
-    description:
-      'Aplikasi digitalisasi proses izin keluar karyawan yang dikembangkan selama kegiatan internship. Sistem membantu menggantikan proses manual dengan alur digital untuk pengajuan, pencatatan, dan pengelolaan data izin sehingga proses administrasi menjadi lebih terstruktur dan mudah dipantau.',
-    tags: ['Laravel', 'PHP', 'MySQL', 'Web Development'],
-    category: 'Web',
-    year: '2025',
-    role: 'Intern — Full-stack',
-    link: '#', 
+  title: 'Sistem Digitalisasi Izin Keluar Karyawan',
+  description:
+    'Aplikasi digitalisasi proses izin keluar karyawan yang dikembangkan selama kegiatan internship. Sistem membantu menggantikan proses manual dengan alur digital untuk pengajuan, pencatatan, dan pengelolaan data izin sehingga proses administrasi menjadi lebih terstruktur dan mudah dipantau.',
+  tags: ['Laravel', 'PHP', 'MySQL', 'Web Development'],
+  category: 'Web',
+  year: '2025',
+  role: 'Intern — Full-stack',
+  caseStudy: {
+    problem:
+      'Proses pengajuan izin keluar karyawan sebelumnya masih manual, sulit dipantau statusnya, dan minim jejak audit.',
+    solution:
+      'Membangun sistem full-stack: frontend React untuk pengajuan izin dengan data karyawan terisi otomatis, backend Laravel untuk validasi dan penentuan alur approval berdasarkan hierarki jabatan, notifikasi otomatis via Telegram Bot, serta pemrosesan asinkron menggunakan job queue.',
+    challenges: [
+      'Merancang logika penentuan approver berdasarkan hierarki jabatan multi-level',
+      'Menjaga konsistensi status antar tabel relasional di tengah proses asinkron',
+      'Menangani callback Telegram (edit pesan, hapus tombol aksi setelah keputusan)',
+      'Mendistribusikan notifikasi ke beberapa atasan tanpa duplikasi',
+    ],
+    impact:
+      'Proses izin yang sebelumnya manual menjadi terdigitalisasi penuh dengan jejak audit yang jelas, mempercepat respons approval, dan mengurangi beban administratif tim HR.',
   },
+},
   {
     title: 'Personal Portfolio Website',
     description:
@@ -50,7 +63,7 @@ export const projects = [
     category: 'Web',
     year: '2025',
     role: 'Frontend Development',
-    link: '#',
+    demo: 'https://hanuraporto90.vercel.app/',
   },
   {
     title: 'Klasifikasi dan Deteksi Kematangan Biji Kopi dengan Naive Bayes',
